@@ -6,15 +6,28 @@ PCA is a fundamental technique in descriptive and exploratory statistics that vi
 
 Tree PCA in our repository is implemented as a set of R routines following the methodology developed in the aforementioned references.  In particular, BHV PCA in our repository is implemented via code freely available at the [GeoPhytter+](http://www.mas.ncl.ac.uk/~ntmwn/geophytterplus/index.html) repository, which is written in java.
 
-### The R Environment
+## The R Environment
 R is a widely used, free, and open source software environment for statistical computing and graphics.  The most recent version of R can be downloaded from the [Comprehensive R Archive Network (CRAN)](https://cran.r-project.org/).  CRAN provides precompiled binary versions of R for Windows, MacOS, and select Linux distributions that are likely sufficient for many users' needs.  For specific details on how to compile, install, and manage R and R packages, refer to the manual [R Installation and Administration](https://cran.r-project.org/doc/manuals/r-release/R-admin.html).
 
-### R Packages Required for Running FluPCA
+## R Packages Required for Running FluPCA
 Implementation of tree PCA on the provided influenza data requires the installation of the following R libraries:
 * [ape](https://cran.r-project.org/web/packages/ape/index.html)
+* [geophyttertools](https://github.com/grady/geophyttertools)
 * [phangorn](https://cran.r-project.org/web/packages/phangorn/index.html)
+* [ggplot2](https://cran.r-project.org/web/packages/ggplot2/index.html)
+* [lpSolveAPI](https://cran.r-project.org/web/packages/lpSolveAPI/index.html)
 
-The library [parallel](https://stat.ethz.ch/R-manual/R-devel/library/parallel/doc/parallel.pdf) is also required.  This package is integrated within the R core, however must still be loaded by typing the following command:
+These packages may be installed either by typing the following command in an R shell:
+```
+install.packages("ape", dependencies=TRUE)
+```
+or by [installing R packages from the command line](http://cran.r-project.org/doc/manuals/r-release/R-admin.html#Installing-packages).
+
+### Parallel Computing
+Given the computational intensity of the implementation on the data example, we use parallel computation.  In order to run this, the library [parallel](https://stat.ethz.ch/R-manual/R-devel/library/parallel/doc/parallel.pdf) is also required.  This package is integrated within the R core, however must still be loaded by typing the following command in an R shell:
 ```
   require(parallel)
 ```
+Currently, only a Windows version is available, however, users may modify the source code to create a Linux version accordingly.
+
+
