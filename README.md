@@ -15,4 +15,6 @@ Implementation of tree PCA on the provided influenza data requires the installat
 * [phangorn](https://cran.r-project.org/web/packages/phangorn/index.html)
 
 The library [parallel](https://stat.ethz.ch/R-manual/R-devel/library/parallel/doc/parallel.pdf) is also required.  This package is integrated within the R core, however must still be loaded by typing the following command:
+```
   require(parallel)
+```
