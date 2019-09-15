@@ -11,4 +11,4 @@ R is a widely used, free, and open source software environment for statistical c
 
 ### R Packages Required for Running FluPCA
 Implementation of tree PCA on the provided influenza data requires the installation of the following R libraries:
-*[ape](https://cran.r-project.org/web/packages/ape/index.html)
+* [ape](https://cran.r-project.org/web/packages/ape/index.html)
