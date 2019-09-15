@@ -4,4 +4,4 @@ This repository provides the code and data to implement the real data example in
 
 ### Principal Component Analysis (PCA)
 
-PCA is a fundamental technique in descriptive and exploratory statistics that visualizes relationships within the data by reducing their dimensionality.  Classical PCA inherently relies on an assumption of a vector space, which does not apply to phylogenetic tree space.  As such, alternative interpretations are needed and have been proposed by Nye et al. and Yoshida et al. to accommodate the non-Euclidean nature of phylogenetic tree space.
+PCA is a fundamental technique in descriptive and exploratory statistics that visualizes relationships within the data by reducing their dimensionality.  Classical PCA inherently relies on an assumption of a vector space, which does not apply to phylogenetic tree space.  As such, alternative interpretations are needed and have been proposed by [Nye et al.](https://academic.oup.com/biomet/article/104/4/901/4259146) and Yoshida et al. to accommodate the non-Euclidean nature of phylogenetic tree space.
