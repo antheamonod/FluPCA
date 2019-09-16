@@ -1,6 +1,6 @@
 # FluPCA
 
-This repository provides the code and data to implement the real data example in Monod et al., which performs principal component analysis (PCA) on sets of phylogenetic trees arising from influenza data with respect to the BHV and tropical metrics.
+This repository provides the code and data to implement the real data example in [Monod et al.](https://arxiv.org/abs/1805.12400), which performs principal component analysis (PCA) on sets of phylogenetic trees arising from influenza data with respect to the BHV and tropical metrics.
 
 PCA is a fundamental technique in descriptive and exploratory statistics that visualizes relationships within the data by reducing their dimensionality.  Classical PCA inherently relies on an assumption of a vector space, which does not apply to phylogenetic tree space.  As such, alternative interpretations are needed and have been proposed by [Nye et al.](https://academic.oup.com/biomet/article/104/4/901/4259146) with respect to the BHV metric (which we refer to as BHV PCA), and [Yoshida et al.](https://link.springer.com/article/10.1007/s11538-018-0493-4) with respect to the tropical metric (which we refer to as tropical PCA), to accommodate the non-Euclidean nature of phylogenetic tree space.
 
