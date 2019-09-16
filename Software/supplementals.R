@@ -1,5 +1,6 @@
 # This file contains supplemental functions required to run BHV and tropical PCA, and calculate their respective proportions of variance explained (R-squared values)
-#
+# Authors: Qiwen Kang, Xu Zhang
+
 project_pi<-function(D_s,D){
   if(is.null(dim(D_s))){
     lambda <- min(D - D_s) 
