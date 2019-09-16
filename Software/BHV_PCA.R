@@ -1,16 +1,18 @@
+# Load the R libraries
+
 library(geophyttertools)
 library(ape)
 library(ggplot2)
 
+# The suffixes denote the following object designations
+# Files with the suffix .txt: original data
+# Files with the suffix .col: output of geophytterplus.FitLFMTriangle separated into two parts, .tree and .colc 
+# Files with the suffix .tree: subsets of the of .col object that are BHV PCA trees
+# Files with the suffix .colc: subsets of .col file object that are projected trees
+# Files with the suffix .trop: output of geophytterplus.DecomposeLFMTriangle, used as BHV triangle background
 
-# NYh3n2_HA_20000_4_1993.txt: the original data.
-# NYh3n2_HA_20000_4_1993.col: the output of geophytterplus.FitLFMTriangle. Separated into two parts, .tree and .colc. 
-    # NYh3n2_HA_20000_4_1993.tree: part of .col file, BHV PCA trees.
-    # NYh3n2_HA_20000_4_1993.colc: part of .col file, the projected trees.
-# NYh3n2_HA_20000_4_1993.trop: the output of geophytterplus.DecomposeLFMTriangle, used as BHV triangle background.
+# Projected trees should be Newick format
 
-# Check http://www.mas.ncl.ac.uk/~ntmwn/geophytterplus/index.html for more details.
-# projected trees should be Newick format
 proj.lines <- readLines("E:/working/5/NYh3n2_HA_20000_5_2011.colc")
 
 proj.lines <- proj.lines[2:20000]
