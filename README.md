@@ -43,7 +43,7 @@ The `Software` directory contains the following set of R scripts:
 
 The tree PCA routines essentially produce the same output for their respective metrics: a second-order principal component as a surface (more precisely: a locus, in the BHV setting; and a tropical triangle, in the tropical setting), whose boundaries are given by three points (trees); and projections of the dataset onto this component.
 
-The `Figures` directory contains (edited) figures of the output of the BHV and tropical PCA routines applied to the 21 datasets provided in the `Data` directory.  Some of these figures are referenced in the main text.
+The `Figures` directory contains (edited) figures of the output of the BHV and tropical PCA routines applied to the 21 datasets provided in the `Data` directory.  They display the second-order principal components; the projections of the dataset onto these components; as well as the tree topologies of the three points defining the components and the projected points themselves.  Some of these figures are referenced in the main text.
 
 ## Questions and Feedback
 For questions and comments on this repository, please contact [Anthea Monod](mailto:antheam@tauex.tau.ac.il) or [Qiwen Kang](mailto:qiwen.kang@uky.edu).  We appreciate any feedback you may have on our repository.
