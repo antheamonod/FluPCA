@@ -40,6 +40,7 @@ The `Software` directory contains the following set of R scripts:
 * `func_ssh.R` is a set of supplemental functions called in running BHV and tropical PCA, and computing the proportion of variance explained (R^2) for each PCA method
 
 ## Running Tree PCA and Reproducing Projective Visualizations
+Please ensure that the files in the `Data` and `Software` directories are downloaded, and set your working directory to this location.
 
 The tree PCA routines essentially produce the same output for their respective metrics: a second-order principal component as a surface (more precisely: a locus, in the BHV setting; and a tropical triangle, in the tropical setting), whose boundaries are given by three points (trees); and projections of the dataset onto this component.
 
