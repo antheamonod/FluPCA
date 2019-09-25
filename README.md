@@ -1,10 +1,10 @@
 # FluPCA
 
-This repository provides the code and data to implement the real data example in [Monod et al.](https://arxiv.org/abs/1805.12400), which performs principal component analysis (PCA) on sets of phylogenetic trees arising from influenza data with respect to the BHV and tropical metrics.
+This repository provides software and data to implement the real data example in [Monod et al.](https://arxiv.org/abs/1805.12400), which performs principal component analysis (PCA) on sets of phylogenetic trees arising from influenza data with respect to the BHV and tropical metrics.
 
 PCA is a fundamental technique in descriptive and exploratory statistics that visualizes relationships within the data by reducing their dimensionality.  Classical PCA inherently relies on an assumption of a vector space, which does not apply to phylogenetic tree space.  As such, alternative interpretations are needed and have been proposed by [Nye et al.](https://academic.oup.com/biomet/article/104/4/901/4259146) with respect to the BHV metric (which we refer to as BHV PCA), and [Yoshida et al.](https://link.springer.com/article/10.1007/s11538-018-0493-4) with respect to the tropical metric (which we refer to as tropical PCA), to accommodate the non-Euclidean nature of phylogenetic tree space.
 
-Tree PCA in our repository is implemented as a set of R routines following the methodology developed in the aforementioned references.  In particular, BHV PCA in our repository is implemented via code freely available at the [GeoPhytter+](http://www.mas.ncl.ac.uk/~ntmwn/geophytterplus/index.html) repository, which is written in [java](https://go.java/index.html?intcmp=gojava-banner-java-com).
+Tree PCA in our repository is implemented as a set of R routines following the methodology developed in the aforementioned references.  In particular, BHV PCA in our repository is implemented via code freely available at the [GeoPhytter+](http://www.mas.ncl.ac.uk/~ntmwn/geophytterplus/index.html) repository, which is written in [Java](https://go.java/index.html?intcmp=gojava-banner-java-com).  Tropical PCA is implemented by code freely available in the [tropPCA](https://github.com/QiwenKang/tropPCA) repository, which is written in R.
 
 For more detail on the underlying theory, please see [Monod et al.](https://arxiv.org/abs/1805.12400) for an overview (especially in reference to the data provided in this repository), or [Nye et al.](https://academic.oup.com/biomet/article/104/4/901/4259146) and [Yoshida et al.](https://link.springer.com/article/10.1007/s11538-018-0493-4) for full descriptions.
 
@@ -37,7 +37,7 @@ The data provided in this repository are available in the `Data` directory are p
 
 ## Description of R Scripts
 The `Software` directory contains the following set of R scripts:
-* `func_ssh.R` is a set of supplemental functions called in running BHV and tropical PCA, and computing the proportion of variance explained (R^2) for each PCA method
+* `func_ssh.R` is a set of supplemental functions called in running tropical PCA, and computing the proportion of variance explained (R^2) for each PCA method
 
 ## Running Tree PCA and Reproducing Projective Visualizations
 Please ensure that the files in the `Data` and `Software` directories are downloaded, and set your working directory to this location.
