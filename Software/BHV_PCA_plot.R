@@ -85,7 +85,6 @@ BHV_Triangle <- function(background, points, outName){
 }
 
 year <- 1993:2013
-frechet_mean <- read.tree("./Frechet_mean.txt")
 
 for(i in 1:21){
   # BHV Trees
@@ -93,7 +92,7 @@ for(i in 1:21){
   proj.lines <- proj.lines[2:(length(proj.lines)-9)]
   BHVTree_plot(proj.lines,BHVTrees,year[i],frechet_mean[i])
   
-  background <- read.topologies(paste("./BHV/N_NYh3n2_HA_20000_5_",year[i],".trop",sep=""))
+  background <- read.topologies(paste("./BHV/N_NYh3n2_HA_20000_5_",year[i],".tri",sep=""))
   points <- read.projections(paste("./ori_colc/N_NYh3n2_HA_20000_5_",year[i],".colc",sep=""))
   BHV_Triangle(background, points, year[i])
 }
