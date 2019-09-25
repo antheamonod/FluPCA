@@ -23,13 +23,13 @@ BHVTree_plot <- function(proj_trees, BHVTrees, outName, frechet_mean){
       } 
     }
   }
+                      
   summary <- table(type)
   proj_bhv_trees <- BHVTrees
   proj_bhv_trees[4] <- frechet_mean 
   for(i in 1:length(summary)) proj_bhv_trees[i+4] <- trees_bhv[as.numeric(names(summary)[i])]
   # Replace the leaves label with new labels
   n <- length(trees_bhv[[1]]$tip.label) 
-  
   
   for(i in 1:length(proj_bhv_trees)) proj_bhv_trees[[i]]$edge.length <- NULL  # ceiling(length(trees)/3)*3
   
@@ -43,7 +43,6 @@ BHVTree_plot <- function(proj_trees, BHVTrees, outName, frechet_mean){
   }) 
   layout(matrix(1:layout_row_n, nc = 3, byrow = TRUE))
   
-  
   tip.orig <- c("Sample1", "Sample2", "Sample3","Sample4","Sample5")
   tip.abbrv <- c("1", "2", "3", "4", "5")
   for (i in seq_along(proj_bhv_trees)){
@@ -54,11 +53,9 @@ BHVTree_plot <- function(proj_trees, BHVTrees, outName, frechet_mean){
   topo_title <- c()
   for(i in seq_along(summary)) topo_title[i] <- paste("Topology ",i," (",summary[i],")", sep="")
   
-  
   treelabs <- c("Tree 1", "Tree 2", "Tree 3","Fréchet mean", topo_title)
   
-  # col_value assigns colors to the points
-  
+  # Plot the trees.
   col_value <- c("#000000","#000000","#000000","#000000","#8dd3c7","#696969","#bebada","#fb8072","#b3de69","#fdb462","#80b1d3","#fccde5","#d9d9d9")
   for(i in seq_along(proj_bhv_trees)) ape::plot.phylo(proj_bhv_trees[[i]], main=treelabs[i], type="c", direction="downwards", srt = 90, adj = 0.5,
                                              label.offset = 0.2, cex = 2, cex.main = 2,  edge.width = 2, font = 2, font.main = 2,col.main = col_value[i])
@@ -66,10 +63,10 @@ BHVTree_plot <- function(proj_trees, BHVTrees, outName, frechet_mean){
 }
 
 # BHV Triangle
-# The ".trop" file is an output of the java program, geophytterplus.DecomposeLFMTriangle.
-# The ".colc" file is an output of the java program, geophytterplus.FitLFMTriangle.
-# "read.topologies" function is from the R package geophyttertools
-# "read.projections" function is from from R package geophyttertools
+# The ".trop" file is define by user. Basically, it is the output of the JAVA program, geophytterplus.DecomposeLFMTriangle.
+# The ".colc" file is define by user. It is a PART of the output of the JAVA program, geophytterplus.FitLFMTriangle.
+# "read.topologies" function is from r package geophyttertools.
+# "read.projections" function is from r package geophyttertools.
 
 BHV_Triangle <- function(background, points, outName){
   
@@ -84,7 +81,12 @@ BHV_Triangle <- function(background, points, outName){
   dev.off()
 }
 
+# Note: ".colc" is a file created by user, check http://www.mas.ncl.ac.uk/~ntmwn/geophytterplus/index.html for more details.
+# projected trees should be Newick format
+setwd("C:/Users/kangq/Desktop/program")
+
 year <- 1993:2013
+frechet_mean <- read.tree("./Frechet_mean.txt")
 
 for(i in 1:21){
   # BHV Trees
