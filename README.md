@@ -44,6 +44,23 @@ Please ensure that the files in the `Data` and `Software` directories are downlo
 
 The tree PCA routines essentially produce the same output for their respective metrics: a second-order principal component as a surface (more precisely: a locus, in the BHV setting; and a tropical triangle, in the tropical setting), whose boundaries are given by three points (trees); and projections of the dataset onto this component.
 
+BHV PCA is implemented by GeoPhytter+ on our datasets in a Linux terminal as follows:
+```
+for file in N_NYh3n2_HA_20000_5_*.txt
+do 
+java -classpath ".:*" geophytterplus.FitLFMTriangle $file -> ${file/.txt/.col}
+sed "20020,20026d" ${file/.txt/.col} | sed "1,17d"  > ${file/.txt/.colc}
+sed "12,20026d" ${file/.txt/.col} | sed "1,8d"  > ${file/.txt/.tree}
+done
+```
+For each dataset, the first line creates a `.col` file which is made up of a `.colc` component, which gives the projected trees, and a `.tree` component, which gives the three points making up the boundaries of the BHV loci (second principal components).  The second and third lines separate the first `.col` file into these separate components.  Then, running
+```
+java -classpath ".:*" geophytterplus.DecomposeLFMTriangle $file 152 10 -> ${file/.tree/.tri}
+```
+gives a `.tri` file, which is used to create the BHV loci for the datasets.
+
+Similarly, implementing tropPCA gives the trees used as vertices for the tropical triangles (second principal components).
+
 The `Figures` directory contains (edited) figures of the output of the BHV and tropical PCA routines applied to the 21 datasets provided in the `Data` directory.  They display the second-order principal components; the projections of the dataset onto these components; as well as the tree topologies of the three points defining the components and the projected points themselves.  Some of these figures are referenced in the main text.
 
 ## Questions and Feedback
