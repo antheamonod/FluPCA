@@ -28,7 +28,7 @@ or by [installing R packages from the command line](http://cran.r-project.org/do
 ### Parallel Computing
 Given the computational intensity of the implementation on the data example, we use parallel computation.  In order to run this, the library [parallel](https://stat.ethz.ch/R-manual/R-devel/library/parallel/doc/parallel.pdf) is also required.  This package is integrated within the R core, however must still be loaded by typing the following command in an R shell:
 ```
-  require(parallel)
+  library(parallel)
 ```
 Currently, only a Windows version is available, however, users may modify the source code to create a Linux version accordingly.
 
@@ -38,6 +38,9 @@ The data provided in this repository are available in the `Data` directory are p
 ## Description of R Scripts
 The `Software` directory contains the following set of R scripts:
 * `func_ssh.R` is a set of supplemental functions called in running tropical PCA, and computing the proportion of variance explained (R^2) for each PCA method
+* `Tropical_PCA_plot.R` runs tropical PCA on the data and produces figures that include the tropical triangle (second principal component) with projected points, as well as plots of the tree topologies of the vertices making up the tropical triangle and the tree topologies of the projected trees
+* `BHV_PCA_plot.R` produces figures that include the BHV locus (second principal component) with projected points, as well as plots of the tree topologies of vertices making up the BHV locus and the tree topologies of the projected trees
+* `Trees_R_squared.R` calculates the proportion of variance explained by both methods, BHV and tropical PCA
 
 ## Running Tree PCA and Reproducing Projective Visualizations
 Please ensure that the files in the `Data` and `Software` directories are downloaded, and set your working directory to this location.
@@ -49,8 +52,8 @@ BHV PCA is implemented by GeoPhytter+ on our datasets in a Linux terminal as fol
 for file in N_NYh3n2_HA_20000_5_*.txt
 do 
 java -classpath ".:*" geophytterplus.FitLFMTriangle $file -> ${file/.txt/.col}
-sed "20020,20026d" ${file/.txt/.col} | sed "1,17d"  > ${file/.txt/.colc}
-sed "12,20026d" ${file/.txt/.col} | sed "1,8d"  > ${file/.txt/.tree}
+sed "20020,20026d" ${file/.txt/.col} | sed "1,17d" -> ${file/.txt/.colc}
+sed "12,20026d" ${file/.txt/.col} | sed "1,8d" -> ${file/.txt/.tree}
 done
 ```
 For each dataset, the first line creates a `.col` file which is made up of a `.colc` component, which gives the projected trees, and a `.tree` component, which gives the three points making up the boundaries of the BHV loci (second principal components).  The second and third lines separate the first `.col` file into these separate components.  Then, running
