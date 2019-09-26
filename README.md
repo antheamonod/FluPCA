@@ -59,17 +59,9 @@ java -classpath ".:*" geophytterplus.DecomposeLFMTriangle $file 152 10 -> ${file
 ```
 gives a `.tri` file, which is used to create the BHV loci for the datasets.  The `.col`, `.tree`, and `.tri` files outputted by running GeoPhytter+ on our data is given in the `GeoPhytter+ Output` directory.
 
-Similarly, implementing tropPCA gives the trees used as vertices for the tropical triangles (second principal components).  Due to the intensive computational nature of the procedure, parallel computing is implemented.  This is specified by 
-```
-cl <- makeCluster(6)
-```
-for the procedure to run in parallel on six clusters.
-
-For convenience, the output from tropPCA on our data required to plot the figures in the main text is incorporated directly into the script.
-
 The `BHV_PCA_plot.R` script runs with data provided in the `GeoPhytter+ Output` directory, and creates figures for each of the datasets depicting the BHV loci and projected points, and figures for the tree topologies for the projected points as well as the vertices of the BHV locus.
 
-The `Tropical_PCA_plot.R` script creates figures for each of the datasets depicting the tropical triangles (as second principal components) and projected points, and figures for the tree topologies for the projected points as well as the vertices of the BHV locus.
+The `Tropical_PCA_plot.R` script runs tropical PCA and creates figures for each of the datasets depicting the tropical triangles (as second principal components) and projected points, and figures for the tree topologies for the projected points as well as the vertices of the BHV locus.  For convenience, the output from tropPCA on our data required to plot the figures in the main text is incorporated directly into the script.
 
 The `Figures` directory contains (edited) figures of the output of the BHV and tropical PCA routines applied to the 21 datasets provided in the `Data` directory.  They display the second-order principal components; the projections of the dataset onto these components; as well as the tree topologies of the three points defining the components and the projected points themselves.  Some of these figures are referenced in the main text.
 
