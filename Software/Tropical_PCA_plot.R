@@ -2,10 +2,11 @@ library(ape)
 library(phangorn)
 library(parallel)
 
-# "func_ssh.R" file includes all the functions we need for calculating with tropical PCA 
-
+# Call the "func_ssh.R" file which includes auxiliary functions needed to run tropical PCA 
 source("./func_ssh.R")
-cl <- makeCluster(6) # Define the number of clusters
+
+# Define the number of clusters used in parallel computing 
+cl <- makeCluster(6)
 
 tropTree_plot <- function(trees_ori, comb_set, outName, pcs=3){
   for(i in 1:length(trees_ori)){
@@ -39,12 +40,9 @@ tropTree_plot <- function(trees_ori, comb_set, outName, pcs=3){
     }
   } 
   
-  # Classify tree topologies
+  # We now classify the tree topologies.  First, we check how many tree topologies are identified.
+  # trees[[1]], trees[[2]], trees[[3]] are the vertices for the tropical triangle, giving the second principal component.
   
-  # Check how many tree topologies are identified
-  
-  # trees[[1]], trees[[2]], trees[[3]] are three principal components
-  # Here we combine different tree topologies with three principal components.
   for(i in 1:length(table(type))){
     trees[[3+i]] <- proj_trees[[i]]
   }
@@ -62,8 +60,7 @@ tropTree_plot <- function(trees_ori, comb_set, outName, pcs=3){
   }) 
   layout(matrix(1:layout_row_n, nc = 3, byrow = TRUE))
   
-  # Replace the leaves label with new labels
-
+  # Replace leaf labels with new labels
   tip.orig <- c("Sample1", "Sample2", "Sample3","Sample4","Sample5")
   tip.abbrv <- c("1", "2", "3", "4", "5")
   for (i in seq_along(trees)){
@@ -97,7 +94,7 @@ tropTree_plot <- function(trees_ori, comb_set, outName, pcs=3){
   tree_num <- as.numeric(rownames(type_ind))
   freq <- type
   
-  # Here we need to define the color we need
+  # Specify colors
   for(i in 1:length(tree_num)){
     freq[type == tree_num[i]] <- i
   }
@@ -121,8 +118,6 @@ tropTree_plot <- function(trees_ori, comb_set, outName, pcs=3){
   points(x = proj_2D_plot_m[,2], y = proj_2D_plot_m[,3], pch = 16, cex = 0.75, col = col_value[freq+3])
   dev.off()
 }
-
-## Tropical principal components trees.
 
 # comb_set is the set includes the index of tree combination detected by the tropical PCA method.
 comb_set <- matrix(c(13167, 19321, 33,   15922, 19825, 9155,  3882,  9324,  1175,
