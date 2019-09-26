@@ -2,7 +2,7 @@ library(ape)
 library(phangorn)
 library(parallel)
 
-# Download code from the tropPCA package available at https://github.com/QiwenKang/tropPCA into your working directory
+# Download code from the tropPCA package available at https://github.com/QiwenKang/tropPCA into working directory
 
 # Call the "func_ssh.R" file which includes auxiliary functions needed to run tropical PCA 
 source("./func_ssh.R")
@@ -44,7 +44,6 @@ tropTree_plot <- function(trees_ori, comb_set, outName, pcs=3){
   
   # We now classify the tree topologies.  First, we check how many tree topologies are identified.
   # trees[[1]], trees[[2]], trees[[3]] are the vertices for the tropical triangle, giving the second principal component.
-  
   for(i in 1:length(table(type))){
     trees[[3+i]] <- proj_trees[[i]]
   }
@@ -80,7 +79,7 @@ tropTree_plot <- function(trees_ori, comb_set, outName, pcs=3){
   
   for(i in seq_along(trees)) ape::plot.phylo(trees[[i]], main=treelabs[i], type="c", direction="downwards", srt = 90, adj = 0.5,
                                              label.offset = 0.2, cex = 2, cex.main = 2,  edge.width = 2, font = 2, font.main = 2,
-                                             col.main = col_value[i]) # Plot the trees
+                                             col.main = col_value[i])
   dev.off()
   
   new_base <- D_all[,comb_set]
@@ -121,7 +120,7 @@ tropTree_plot <- function(trees_ori, comb_set, outName, pcs=3){
   dev.off()
 }
 
-# comb_set is the set includes the index of tree combination detected by the tropical PCA method.
+# comb_set is the combination set of trees (by index) making up the vertex set for the tropical triangles 
 comb_set <- matrix(c(13167, 19321, 33,   15922, 19825, 9155,  3882,  9324,  1175,
                      5747,  15559, 4815, 19778, 405,   2588,  19927, 16297, 7182,
                      5868,  6428,  1296, 11240, 10231, 5653,  5892,  11225, 13277,
@@ -129,7 +128,6 @@ comb_set <- matrix(c(13167, 19321, 33,   15922, 19825, 9155,  3882,  9324,  1175
                      5092,  17025, 1529, 13321, 13956, 19531, 5050,  5020,  12878,
                      17233, 1701,  4199, 5921,  4394,  159,   15820, 9341,  2506,
                      10879, 13188, 3336, 182,   5680,  3106,  10665, 19722, 373), ncol = 3,byrow = T)
-
 
 dataList <- list.files("./data/")
 year <- c(1993:2013)
@@ -139,7 +137,7 @@ for(i in 1:21){
 }
 
 # Appendix A 
-# Combination list
+# Combination list: Number of tree topologies, trees that make up vertices of tropical triangle
 # 1: 1, 13167 19321 33
 # 2: 2, 15922 19825 9155
 # 3: 1, 3882 9324 1175
