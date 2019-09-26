@@ -42,7 +42,7 @@ The `Software` directory contains the following set of R scripts:
 ## Running Tree PCA and Reproducing Projective Visualizations
 Please ensure that the files in the `Data` and `Software` directories are downloaded, and set your working directory to this location.
 
-The tree PCA routines essentially produce the same output for their respective metrics: a second-order principal component as a surface (more precisely: a locus, in the BHV setting; and a tropical triangle, in the tropical setting), whose boundaries are given by three points (trees); and projections of the dataset onto this component.
+The tree PCA routines essentially produce the same output for their respective metrics: a second-order principal component as a surface (more precisely: a locus, in the BHV setting; and a tropical triangle, in the tropical setting), whose boundaries are given by three points (trees); and projections of the dataset onto this component.  The software we provide in this repository creates the plots for the analyses of each of our 21 influenza datasets, given in the `Figures` directory.
 
 BHV PCA is implemented by GeoPhytter+ on our datasets in a Linux terminal as follows:
 ```
@@ -67,7 +67,9 @@ for the procedure to run in parallel on six clusters.
 
 For convenience, the output from tropPCA on our data required to plot the figures in the main text is incorporated directly into the script.
 
+The `BHV_PCA_plot.R` script runs with data provided in the `GeoPhytter+ Output` directory, and creates figures for each of the datasets depicting the BHV loci and projected points, and figures for the tree topologies for the projected points as well as the vertices of the BHV locus.
+
+The `Tropical_PCA_plot.R` script creates figures for each of the datasets depicting the tropical triangles (as second principal components) and projected points, and figures for the tree topologies for the projected points as well as the vertices of the BHV locus.
+
 The `Figures` directory contains (edited) figures of the output of the BHV and tropical PCA routines applied to the 21 datasets provided in the `Data` directory.  They display the second-order principal components; the projections of the dataset onto these components; as well as the tree topologies of the three points defining the components and the projected points themselves.  Some of these figures are referenced in the main text.
 
-## Questions and Feedback
-For questions and comments on this repository, please contact [Anthea Monod](mailto:antheam@tauex.tau.ac.il) or [Qiwen Kang](mailto:qiwen.kang@uky.edu).  We appreciate any feedback you may have on our repository.
