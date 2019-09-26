@@ -2,6 +2,8 @@ library(ape)
 library(phangorn)
 library(parallel)
 
+# Download code from the tropPCA package available at https://github.com/QiwenKang/tropPCA into your working directory
+
 # Call the "func_ssh.R" file which includes auxiliary functions needed to run tropical PCA 
 source("./func_ssh.R")
 
@@ -47,7 +49,7 @@ tropTree_plot <- function(trees_ori, comb_set, outName, pcs=3){
     trees[[3+i]] <- proj_trees[[i]]
   }
   
-  # Keep the tree topology.
+  # Keep the tree topology
   for(i in 1:length(trees)) trees[[i]]$edge.length <- NULL  # ceiling(length(trees)/3)*3
   
   layout_row_n <- ceiling(length(trees)/3)*3
@@ -73,7 +75,7 @@ tropTree_plot <- function(trees_ori, comb_set, outName, pcs=3){
   
   treelabs <- c("PC1", "PC2", "PC3", topo_title)
   
-  # Plot the trees.
+  # Plot the trees
   col_value <- c("#000000","#000000","#000000","#8dd3c7","#696969","#bebada","#fb8072","#b3de69","#fdb462","#80b1d3","#fccde5","#d9d9d9")
   
   for(i in seq_along(trees)) ape::plot.phylo(trees[[i]], main=treelabs[i], type="c", direction="downwards", srt = 90, adj = 0.5,
