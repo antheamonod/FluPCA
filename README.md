@@ -57,7 +57,7 @@ For each dataset, the first line creates a `.col` file which is made up of a `.c
 ```
 java -classpath ".:*" geophytterplus.DecomposeLFMTriangle $file 152 10 -> ${file/.tree/.tri}
 ```
-gives a `.tri` file, which is used to create the BHV loci for the datasets.
+gives a `.tri` file, which is used to create the BHV loci for the datasets.  The `.col`, `.tree`, and `.tri` files outputted by running GeoPhytter+ on our data is given in the `GeoPhytter+ Output` directory.
 
 Similarly, implementing tropPCA gives the trees used as vertices for the tropical triangles (second principal components).
 
