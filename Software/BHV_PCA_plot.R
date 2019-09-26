@@ -3,6 +3,10 @@ library(ape)
 library(phangorn)
 library(ggplot2)
 
+# The following function reads in output from implementing the GeoPhytter+ package on the original data, and
+# creates figures of the tree topologies of the three vertices from the data that make up the BHV locus, as well
+# as the tree topologies of the projected data points onto the BHV locus.  This is the right-hand side of the
+# each of the figures in the Figures directory.
 BHVTree_plot <- function(proj_trees, BHVTrees, outName, frechet_mean){
 
   tree_list_ori <- strsplit(proj.lines, split= " ")
@@ -62,14 +66,11 @@ BHVTree_plot <- function(proj_trees, BHVTrees, outName, frechet_mean){
   dev.off()
 }
 
-# BHV Triangle
-# The ".trop" file is define by user. Basically, it is the output of the JAVA program, geophytterplus.DecomposeLFMTriangle.
-# The ".colc" file is define by user. It is a PART of the output of the JAVA program, geophytterplus.FitLFMTriangle.
-# "read.topologies" function is from r package geophyttertools.
-# "read.projections" function is from r package geophyttertools.
-
+# The following function draws the BHV locus and plots the projected points onto the locus. 
+# The ".tri" file is derived from the output of the Java function geophytterplus.DecomposeLFMTriangle.
+# The ".colc" file is derived from the output of the Java function geophytterplus.FitLFMTriangle.
+# These files are provided for convenience in the GeoPhytter+ Output directory.                      
 BHV_Triangle <- function(background, points, outName){
-  
   jpeg(paste("./BHVTriangle",outName,".jpg",sep=""),width=400, height=300)
   pp <- ggplot(background) + corner_labels(offset=0.03, size = 6) +
     guides(fill=guide_legend(title="Topology")) +
@@ -81,15 +82,15 @@ BHV_Triangle <- function(background, points, outName){
   dev.off()
 }
 
-# Note: ".colc" is a file created by user, check http://www.mas.ncl.ac.uk/~ntmwn/geophytterplus/index.html for more details.
-# projected trees should be Newick format
-setwd("C:/Users/kangq/Desktop/program")
-
 year <- 1993:2013
+
+# Optional command for BHV Fréchet mean, calculated from GeoPhytter+                      
 frechet_mean <- read.tree("./Frechet_mean.txt")
 
+# Generate plots displaying BHV loci and corresponding plots of tree topologies of vertices defining the loci,
+# tree topologies of projected points, as well as frequency of projected trees for each tree topology.  
+# The functions "read.topologies" and "read.projections" are called from the geophyttertools package.
 for(i in 1:21){
-  # BHV Trees
   proj.lines <- readLines(paste("./ori_colc/N_NYh3n2_HA_20000_5_",year[i],".colc",sep=""))
   proj.lines <- proj.lines[2:(length(proj.lines)-9)]
   BHVTree_plot(proj.lines,BHVTrees,year[i],frechet_mean[i])
@@ -98,3 +99,5 @@ for(i in 1:21){
   points <- read.projections(paste("./ori_colc/N_NYh3n2_HA_20000_5_",year[i],".colc",sep=""))
   BHV_Triangle(background, points, year[i])
 }
+
+                      
