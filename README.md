@@ -65,3 +65,6 @@ The `Tropical_PCA_plot.R` script runs tropical PCA and creates figures for each 
 
 The `Figures` directory contains (edited) figures of the output of the BHV and tropical PCA routines applied to the 21 datasets provided in the `Data` directory.  They display the second-order principal components; the projections of the dataset onto these components; as well as the tree topologies of the three points defining the components and the projected points themselves.  Some of these figures are referenced in the main text.
 
+## Calculating Proportion of Variance Explained
+The `Trees_R_squared.R` script calculates and compares the percentage of variance explained (R^2) between the two methods.  These values are reported in Table 1 in the main text.
+
